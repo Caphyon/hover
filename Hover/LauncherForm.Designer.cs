@@ -474,7 +474,7 @@
       this.Controls.Add(this.grpPackageInfo);
       this.DoubleBuffered = true;
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-      this.MinimumSize = new System.Drawing.Size(100, 100);
+      this.MinimumSize = new System.Drawing.Size(883, 471);
       this.Name = "LauncherForm";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Hover by Advanced Installer";
