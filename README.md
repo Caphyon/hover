@@ -1,4 +1,4 @@
-# hover
+# Hover
 [Hover](https://www.advancedinstaller.com/hover) is a free tool that allows you to run natively installed applications inside an MSIX or App-V container.
 
 <img src="https://cdn.advancedinstaller.com/img/hover/hover-ui.png">
