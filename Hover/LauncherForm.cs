@@ -476,7 +476,7 @@ namespace Hover
         if (mPowershellWorker.HadErrors)
         {
           int hres = mPowershellWorker.Streams.Error[0].Exception.HResult;
-          if (hres == -2147023673)
+          if (hres == -2147023673 || hres == -2147467259)
           {
             // -2147023673(0x800704C7) is the HRESULT for ERROR_CANCELLED. 
             // Give a more meaningful message instead.

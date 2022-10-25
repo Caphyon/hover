@@ -309,6 +309,7 @@
       this.listMSIXApps.Location = new System.Drawing.Point(9, 6);
       this.listMSIXApps.Name = "listMSIXApps";
       this.listMSIXApps.Size = new System.Drawing.Size(404, 221);
+      this.listMSIXApps.Sorted = true;
       this.listMSIXApps.TabIndex = 0;
       this.listMSIXApps.SelectedIndexChanged += new System.EventHandler(this.listMSIXApps_SelectedIndexChanged);
       this.listMSIXApps.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listMSIXApps_KeyDown);
