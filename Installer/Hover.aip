@@ -22,7 +22,7 @@
     <ROW Property="ProductCode" Value="1033:{9A57E337-0FAF-41D9-BFB2-FE571829B178} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Hover"/>
-    <ROW Property="ProductVersion" Value="1.2.0" Options="32"/>
+    <ROW Property="ProductVersion" Value="1.2.1" Options="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{871F63C9-C88F-40FF-AF65-AEBD05F36570}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
