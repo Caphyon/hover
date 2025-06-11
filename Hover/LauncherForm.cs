@@ -451,10 +451,6 @@ namespace Hover
     private void LaunchTool(MSIXPackageInfo aMSIXPkg, ExternalExeInfo aToolInfo)
     {
       StartStopProgressAnimation(true);
-      if (aToolInfo.ShortName == "Explorer")
-      {
-        MessageBox.Show(this, "Due to a limitation in Windows 10, Explorer.exe will not launch in the context of the MSIX package container.\n\nThis will get fixed in a future Windows update.", "Hover limitation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-      }
 
       BackgroundWorker bw = new BackgroundWorker();
       bw.DoWork += (s, e) =>
