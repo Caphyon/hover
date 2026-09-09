@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="12.5" version="22.8" Modules="enterprise" RootPath="." Language="en" Id="{BF757FCE-EFDA-4351-9AD6-C7D95FDDF62F}" Backup="false">
+<DOCUMENT Type="Advanced Installer" CreateVersion="12.5" version="24.0" Modules="enterprise" RootPath="." Language="en" Id="{BF757FCE-EFDA-4351-9AD6-C7D95FDDF62F}" Backup="false">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_IA_APPLICATION_ID" Value="5910657cce927256414af233"/>
@@ -15,14 +15,14 @@
     <ROW Property="ARPCONTACT" Value="https://www.advancedinstaller.com/contact.html"/>
     <ROW Property="ARPHELPLINK" Value="https://www.advancedinstaller.com/support.html"/>
     <ROW Property="ARPNOMODIFY" MultiBuildValue="DefaultBuild:1"/>
-    <ROW Property="ARPPRODUCTICON" Value="hover_logo_1.exe" Type="8"/>
+    <ROW Property="ARPPRODUCTICON" Value="hover_logo.exe" Type="8"/>
     <ROW Property="ARPURLINFOABOUT" Value="https://www.advancedinstaller.com/msix-packaging.html"/>
     <ROW Property="LIMITUI" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="Manufacturer" Value="Caphyon"/>
-    <ROW Property="ProductCode" Value="1033:{9A57E337-0FAF-41D9-BFB2-FE571829B178} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{1E50721C-8F5C-4F84-935A-2A300D6C9ABB} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Hover"/>
-    <ROW Property="ProductVersion" Value="1.2.1" Options="32"/>
+    <ROW Property="ProductVersion" Value="2.0.0" Options="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{871F63C9-C88F-40FF-AF65-AEBD05F36570}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -42,31 +42,135 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
     <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="Assets_Dir" Directory_Parent="APPDIR" DefaultDir="Assets"/>
     <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="DESKTO~1|DesktopFolder" IsPseudoRoot="1"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="native_1_Dir" Directory_Parent="winarm64ec_Dir" DefaultDir="native"/>
+    <ROW Directory="native_2_Dir" Directory_Parent="winx64_Dir" DefaultDir="native"/>
+    <ROW Directory="native_3_Dir" Directory_Parent="winx86_Dir" DefaultDir="native"/>
+    <ROW Directory="native_Dir" Directory_Parent="winarm64_Dir" DefaultDir="native"/>
+    <ROW Directory="runtimes_Dir" Directory_Parent="APPDIR" DefaultDir="runtimes"/>
+    <ROW Directory="winarm64_Dir" Directory_Parent="runtimes_Dir" DefaultDir="WIN-AR~1|win-arm64"/>
+    <ROW Directory="winarm64ec_Dir" Directory_Parent="runtimes_Dir" DefaultDir="WIN-AR~2|win-arm64ec"/>
+    <ROW Directory="winx64_Dir" Directory_Parent="runtimes_Dir" DefaultDir="win-x64"/>
+    <ROW Directory="winx86_Dir" Directory_Parent="runtimes_Dir" DefaultDir="win-x86"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
     <ROW Component="AI_IA_ENABLE" ComponentId="{0159651D-DE88-4EE2-A3F5-31ACFC3C3109}" Directory_="APPDIR" Attributes="4" KeyPath="AI_IA_ENABLE" Options="1"/>
     <ROW Component="APPDIR" ComponentId="{20B62F5A-6540-4E58-B5B0-7F4806CC3FF7}" Directory_="APPDIR" Attributes="0"/>
-    <ROW Component="Hover.exe" ComponentId="{3BF249C3-904B-4D33-9495-A5D174E4C683}" Directory_="APPDIR" Attributes="0" KeyPath="Hover.exe"/>
+    <ROW Component="App.xbf" ComponentId="{A54D443E-690B-4280-8493-7886DF9652EC}" Directory_="APPDIR" Attributes="0" KeyPath="App.xbf" Type="0"/>
+    <ROW Component="Hover.dll" ComponentId="{52ADEB02-A903-4EDD-B282-0FBC08D800D5}" Directory_="APPDIR" Attributes="256" KeyPath="Hover.dll"/>
+    <ROW Component="Hover.exe" ComponentId="{91AFFD41-A2F9-4CC7-AFB2-A269056597E5}" Directory_="APPDIR" Attributes="256" KeyPath="Hover.exe"/>
+    <ROW Component="Microsoft.Graphics.Imaging.Projection.dll" ComponentId="{228BF180-D9AA-4ADA-93F3-29A9B20A03A7}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Graphics.Imaging.Projection.dll"/>
+    <ROW Component="Microsoft.InteractiveExperiences.Projection.dll" ComponentId="{D5D364F2-378D-402E-9AF0-7FE2C0D52F96}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.InteractiveExperiences.Projection.dll"/>
+    <ROW Component="Microsoft.ML.OnnxRuntime.dll" ComponentId="{2DA9031A-41B6-469B-AC02-0018794F0C7C}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.ML.OnnxRuntime.dll"/>
+    <ROW Component="Microsoft.Security.Authentication.OAuth.Projection.dll" ComponentId="{D5701560-10D5-4A08-91CE-719DC5BD479B}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Security.Authentication.OAuth.Projection.dll"/>
+    <ROW Component="Microsoft.Web.WebView2.Core.Projection.dll" ComponentId="{A2C27B13-A7BB-47B0-A8F5-52FBB6BEFA8E}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Web.WebView2.Core.Projection.dll"/>
+    <ROW Component="Microsoft.Web.WebView2.Core.dll" ComponentId="{744603D2-BA5C-4232-B0AB-BC342CBEEB42}" Directory_="APPDIR" Attributes="256" KeyPath="Microsoft.Web.WebView2.Core.dll"/>
+    <ROW Component="Microsoft.WinUI.dll" ComponentId="{E0C0A252-59BE-4D85-9E5E-5F27118EA14F}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.WinUI.dll"/>
+    <ROW Component="Microsoft.Windows.AI.ContentSafety.Projection.dll" ComponentId="{60EBB6F7-CDAB-437D-897D-0628AA2EF9F6}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.AI.ContentSafety.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.AI.Foundation.Projection.dll" ComponentId="{CCE01304-EDAB-4E14-A06D-B527747DFF51}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.AI.Foundation.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.AI.Imaging.Projection.dll" ComponentId="{B1C04825-5765-475F-AF11-FB841D54EE12}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.AI.Imaging.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.AI.MachineLearning.Projection.dll" ComponentId="{66218D74-843A-4CCF-A3C9-3DC5D0F116C4}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.AI.MachineLearning.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.AI.Projection.dll" ComponentId="{2CC9A3B7-46B0-41F3-B587-996C4729C02B}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.AI.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.AI.Text.Projection.dll" ComponentId="{DA866BA4-BC58-45F8-ABDA-42745D133D07}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.AI.Text.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.AppLifecycle.Projection.dll" ComponentId="{0EB3F0A5-7044-4DB9-B565-5DCD0D3EB063}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.AppLifecycle.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.AppNotifications.Builder.Projection.dll" ComponentId="{648A7ED3-67F2-4A86-9781-69A3A0C77983}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.AppNotifications.Builder.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.AppNotifications.Projection.dll" ComponentId="{3A36DFD7-EE55-4A65-B3AE-3A6AA0AF3FEF}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.AppNotifications.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.ApplicationModel.Background.Projection.dll" ComponentId="{A6610E78-AAE7-48F5-892F-20080881D9F6}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.ApplicationModel.Background.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.ApplicationModel.DynamicDependency.Projection.dll" ComponentId="{D51D232B-AF9E-4F17-80F4-00E46D69928C}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.ApplicationModel.DynamicDependency.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.ApplicationModel.Resources.Projection.dll" ComponentId="{EFBB41BF-1ED4-4940-AD7E-3AA4724D626E}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.ApplicationModel.Resources.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.ApplicationModel.WindowsAppRuntime.Projection.dll" ComponentId="{F28FB469-2248-4C8A-ACE2-06F1FFC7E911}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.ApplicationModel.WindowsAppRuntime.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.ApplicationModel_1_.Background.UniversalBGTask.dll" ComponentId="{CC3B9A04-0A7D-4E2D-A016-1D042D235A00}" Directory_="native_Dir" Attributes="256" KeyPath="Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.dll"/>
+    <ROW Component="Microsoft.Windows.ApplicationModel_2_.Background.UniversalBGTask.dll" ComponentId="{14347DFD-5232-44F3-9B1B-26857D1B16F1}" Directory_="native_1_Dir" Attributes="256" KeyPath="Microsoft.Windows.ApplicationModel_1_.Background.UniversalBGTask.dll"/>
+    <ROW Component="Microsoft.Windows.ApplicationModel_3_.Background.UniversalBGTask.dll" ComponentId="{7337170A-FD1F-40EF-8038-DB41D7A0B558}" Directory_="native_2_Dir" Attributes="256" KeyPath="Microsoft.Windows.ApplicationModel_2_.Background.UniversalBGTask.dll"/>
+    <ROW Component="Microsoft.Windows.ApplicationModel_4_.Background.UniversalBGTask.dll" ComponentId="{99502573-1412-4FAA-9BFE-0EAA28CC17B8}" Directory_="native_3_Dir" Attributes="0" KeyPath="Microsoft.Windows.ApplicationModel_3_.Background.UniversalBGTask.dll"/>
+    <ROW Component="Microsoft.Windows.BadgeNotifications.Projection.dll" ComponentId="{E8F5A507-9A1F-4B0F-9741-2CB9660FBDFC}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.BadgeNotifications.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.Foundation.Projection.dll" ComponentId="{78D0C33B-A759-492C-8B2F-8FA1A33631AD}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.Foundation.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.Management.Deployment.Projection.dll" ComponentId="{6D015831-6AC6-4199-B95C-A3AA8D32E981}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.Management.Deployment.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.Media.Capture.Projection.dll" ComponentId="{47D67C07-9D2D-4DB2-B22C-D4B60CD80502}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.Media.Capture.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.PushNotifications.Projection.dll" ComponentId="{B1B46F55-23E3-413C-A1A4-3AD9446CBA69}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.PushNotifications.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.SDK.NET.dll" ComponentId="{58C5A7A7-7309-4541-8FCF-10326335748A}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.SDK.NET.dll"/>
+    <ROW Component="Microsoft.Windows.Security.AccessControl.Projection.dll" ComponentId="{C8FCC063-BC95-4BDB-8B6A-5D96CE43C1FB}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.Security.AccessControl.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.Storage.Pickers.Projection.dll" ComponentId="{DAD336E9-C922-4E75-A1F2-76F2BCF42C9F}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.Storage.Pickers.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.Storage.Projection.dll" ComponentId="{944F99AF-0DEE-4506-9235-15E6290D64A6}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.Storage.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.System.Power.Projection.dll" ComponentId="{90373115-A936-493F-AE11-B06C53366C37}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.System.Power.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.System.Projection.dll" ComponentId="{5FA4D736-1357-4E77-9DC0-307541204F0E}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.System.Projection.dll"/>
+    <ROW Component="Microsoft.Windows.Widgets.Projection.dll" ComponentId="{BE5FDC50-7B82-4A63-8D6D-09B7F2B0C870}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.Widgets.Projection.dll"/>
+    <ROW Component="Microsoft.WindowsAppRuntime.Bootst_1_rap.dll" ComponentId="{7F061E56-E01E-44D0-B63E-A5648E477AF8}" Directory_="native_1_Dir" Attributes="256" KeyPath="Microsoft.WindowsAppRuntime.Bootst_1_rap.dll"/>
+    <ROW Component="Microsoft.WindowsAppRuntime.Bootst_2_rap.dll" ComponentId="{A33C9ACC-6307-48BD-BD24-8092463B074D}" Directory_="native_2_Dir" Attributes="256" KeyPath="Microsoft.WindowsAppRuntime.Bootst_2_rap.dll"/>
+    <ROW Component="Microsoft.WindowsAppRuntime.Bootst_3_rap.dll" ComponentId="{21264782-0A35-4219-A691-F2A9B84FA35F}" Directory_="native_3_Dir" Attributes="0" KeyPath="Microsoft.WindowsAppRuntime.Bootst_3_rap.dll"/>
+    <ROW Component="Microsoft.WindowsAppRuntime.Bootstrap.Net.dll" ComponentId="{6AD7A93A-1F24-4762-8C83-850064A387F6}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.WindowsAppRuntime.Bootstrap.Net.dll"/>
+    <ROW Component="Microsoft.WindowsAppRuntime.Bootstrap.dll" ComponentId="{2B4BE12B-1031-458C-BA66-78501CA1AAB0}" Directory_="native_Dir" Attributes="256" KeyPath="Microsoft.WindowsAppRuntime.Bootstrap.dll"/>
     <ROW Component="ProductInformation" ComponentId="{61B06FEE-7AF0-42AC-BDD9-D4BF6590BAF4}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
-    <ROW Component="System.Memory.dll" ComponentId="{D675E0D4-D115-4187-86BD-6EC6C4AEE51F}" Directory_="APPDIR" Attributes="0" KeyPath="System.Memory.dll"/>
-    <ROW Component="System.Numerics.Vectors.dll" ComponentId="{1EB8AB9C-E1F7-487C-A98E-9E84BD16F4F9}" Directory_="APPDIR" Attributes="0" KeyPath="System.Numerics.Vectors.dll"/>
-    <ROW Component="System.Runtime.CompilerServices.Unsafe.dll" ComponentId="{C2C8A49E-C76E-4A1F-B3E3-BB1E096291F1}" Directory_="APPDIR" Attributes="0" KeyPath="System.Runtime.CompilerServices.Unsafe.dll"/>
-    <ROW Component="System.Security.Principal.Windows.dll" ComponentId="{0D238EBA-E6AF-42F7-8C67-C0FFDD66327C}" Directory_="APPDIR" Attributes="0" KeyPath="System.Security.Principal.Windows.dll"/>
-    <ROW Component="hoverapp.exe.config" ComponentId="{5130D037-E989-4DEE-8CC1-69511DB948CC}" Directory_="APPDIR" Attributes="0" KeyPath="hoverapp.exe.config" Type="0"/>
+    <ROW Component="System.Numerics.Tensors.dll" ComponentId="{D383FC55-D9F0-4775-BCAE-59EE0093782D}" Directory_="APPDIR" Attributes="0" KeyPath="System.Numerics.Tensors.dll"/>
+    <ROW Component="WebView2Loader.dll" ComponentId="{EBCC81D3-111D-4A9E-BC07-44211C13CA04}" Directory_="native_Dir" Attributes="256" KeyPath="WebView2Loader.dll"/>
+    <ROW Component="WebView2Loader.dll_1" ComponentId="{98383095-DA22-40CD-96ED-DFED1EA4FEB7}" Directory_="native_2_Dir" Attributes="256" KeyPath="WebView2Loader.dll_1"/>
+    <ROW Component="WebView2Loader.dll_2" ComponentId="{B7AA35F0-C1F7-428F-8422-1FC884B9ACD9}" Directory_="native_3_Dir" Attributes="0" KeyPath="WebView2Loader.dll_2"/>
+    <ROW Component="WinRT.Runtime.dll" ComponentId="{DB4722CF-6BE9-4A20-A35C-69221A769BF8}" Directory_="APPDIR" Attributes="0" KeyPath="WinRT.Runtime.dll"/>
+    <ROW Component="hover_logo.ico" ComponentId="{2C8E0B12-C521-44C6-BA1E-D024AC45FC73}" Directory_="Assets_Dir" Attributes="0" KeyPath="hover_logo.ico" Type="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
-    <ROW File="Hover.exe" Component_="Hover.exe" FileName="HOVER-~1.EXE|hover-app.exe" Attributes="0" SourcePath="..\Hover\bin\Release\hover-app.exe" SelfReg="false" DigSign="true"/>
-    <ROW File="hoverapp.exe.config" Component_="hoverapp.exe.config" FileName="HOVER-~1.CON|hover-app.exe.config" Attributes="0" SourcePath="..\Hover\bin\Release\hover-app.exe.config" SelfReg="false"/>
-    <ROW File="System.Memory.dll" Component_="System.Memory.dll" FileName="SYSTEM~1.DLL|System.Memory.dll" Attributes="0" SourcePath="..\Hover\bin\Release\System.Memory.dll" SelfReg="false"/>
-    <ROW File="System.Numerics.Vectors.dll" Component_="System.Numerics.Vectors.dll" FileName="SYSTEM~2.DLL|System.Numerics.Vectors.dll" Attributes="0" SourcePath="..\Hover\bin\Release\System.Numerics.Vectors.dll" SelfReg="false"/>
-    <ROW File="System.Runtime.CompilerServices.Unsafe.dll" Component_="System.Runtime.CompilerServices.Unsafe.dll" FileName="SYSTEM~3.DLL|System.Runtime.CompilerServices.Unsafe.dll" Attributes="0" SourcePath="..\Hover\bin\Release\System.Runtime.CompilerServices.Unsafe.dll" SelfReg="false"/>
-    <ROW File="System.Security.Principal.Windows.dll" Component_="System.Security.Principal.Windows.dll" FileName="SYSTEM~4.DLL|System.Security.Principal.Windows.dll" Attributes="0" SourcePath="..\Hover\bin\Release\System.Security.Principal.Windows.dll" SelfReg="false"/>
+    <ROW File="App.xbf" Component_="App.xbf" FileName="App.xbf" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\App.xbf" SelfReg="false"/>
+    <ROW File="Hover.deps.json" Component_="App.xbf" FileName="HOVERD~1.JSO|Hover.deps.json" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Hover.deps.json" SelfReg="false"/>
+    <ROW File="Hover.dll" Component_="Hover.dll" FileName="Hover.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Hover.dll" SelfReg="false"/>
+    <ROW File="Hover.exe" Component_="Hover.exe" FileName="Hover.exe" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Hover.exe" SelfReg="false" DigSign="true"/>
+    <ROW File="Hover.pdb" Component_="Hover.exe" FileName="Hover.pdb" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Hover.pdb" SelfReg="false"/>
+    <ROW File="Hover.pri" Component_="App.xbf" FileName="Hover.pri" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Hover.pri" SelfReg="false"/>
+    <ROW File="Hover.runtimeconfig.json" Component_="App.xbf" FileName="HOVERR~1.JSO|Hover.runtimeconfig.json" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Hover.runtimeconfig.json" SelfReg="false"/>
+    <ROW File="MainWindow.xbf" Component_="App.xbf" FileName="MAINWI~1.XBF|MainWindow.xbf" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\MainWindow.xbf" SelfReg="false"/>
+    <ROW File="Microsoft.Graphics.Imaging.Projection.dll" Component_="Microsoft.Graphics.Imaging.Projection.dll" FileName="MICROS~1.DLL|Microsoft.Graphics.Imaging.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Graphics.Imaging.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.InteractiveExperiences.Projection.dll" Component_="Microsoft.InteractiveExperiences.Projection.dll" FileName="MICROS~2.DLL|Microsoft.InteractiveExperiences.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.InteractiveExperiences.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.ML.OnnxRuntime.dll" Component_="Microsoft.ML.OnnxRuntime.dll" FileName="MICROS~3.DLL|Microsoft.ML.OnnxRuntime.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.ML.OnnxRuntime.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Security.Authentication.OAuth.Projection.dll" Component_="Microsoft.Security.Authentication.OAuth.Projection.dll" FileName="MICROS~4.DLL|Microsoft.Security.Authentication.OAuth.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Security.Authentication.OAuth.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Web.WebView2.Core.dll" Component_="Microsoft.Web.WebView2.Core.dll" FileName="MICROS~5.DLL|Microsoft.Web.WebView2.Core.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Web.WebView2.Core.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Web.WebView2.Core.Projection.dll" Component_="Microsoft.Web.WebView2.Core.Projection.dll" FileName="MICROS~6.DLL|Microsoft.Web.WebView2.Core.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Web.WebView2.Core.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.AI.ContentSafety.Projection.dll" Component_="Microsoft.Windows.AI.ContentSafety.Projection.dll" FileName="MICROS~7.DLL|Microsoft.Windows.AI.ContentSafety.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.AI.ContentSafety.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.AI.Foundation.Projection.dll" Component_="Microsoft.Windows.AI.Foundation.Projection.dll" FileName="MICROS~8.DLL|Microsoft.Windows.AI.Foundation.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.AI.Foundation.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.AI.Imaging.Projection.dll" Component_="Microsoft.Windows.AI.Imaging.Projection.dll" FileName="MICROS~9.DLL|Microsoft.Windows.AI.Imaging.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.AI.Imaging.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.AI.MachineLearning.Projection.dll" Component_="Microsoft.Windows.AI.MachineLearning.Projection.dll" FileName="MICRO~10.DLL|Microsoft.Windows.AI.MachineLearning.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.AI.MachineLearning.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.AI.Projection.dll" Component_="Microsoft.Windows.AI.Projection.dll" FileName="MICRO~11.DLL|Microsoft.Windows.AI.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.AI.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.AI.Text.Projection.dll" Component_="Microsoft.Windows.AI.Text.Projection.dll" FileName="MICRO~12.DLL|Microsoft.Windows.AI.Text.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.AI.Text.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.ApplicationModel.Background.Projection.dll" Component_="Microsoft.Windows.ApplicationModel.Background.Projection.dll" FileName="MICRO~13.DLL|Microsoft.Windows.ApplicationModel.Background.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.ApplicationModel.Background.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.ApplicationModel.DynamicDependency.Projection.dll" Component_="Microsoft.Windows.ApplicationModel.DynamicDependency.Projection.dll" FileName="MICRO~14.DLL|Microsoft.Windows.ApplicationModel.DynamicDependency.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.ApplicationModel.DynamicDependency.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.ApplicationModel.Resources.Projection.dll" Component_="Microsoft.Windows.ApplicationModel.Resources.Projection.dll" FileName="MICRO~15.DLL|Microsoft.Windows.ApplicationModel.Resources.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.ApplicationModel.Resources.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.ApplicationModel.WindowsAppRuntime.Projection.dll" Component_="Microsoft.Windows.ApplicationModel.WindowsAppRuntime.Projection.dll" FileName="MICRO~16.DLL|Microsoft.Windows.ApplicationModel.WindowsAppRuntime.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.ApplicationModel.WindowsAppRuntime.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.AppLifecycle.Projection.dll" Component_="Microsoft.Windows.AppLifecycle.Projection.dll" FileName="MICRO~17.DLL|Microsoft.Windows.AppLifecycle.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.AppLifecycle.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.AppNotifications.Builder.Projection.dll" Component_="Microsoft.Windows.AppNotifications.Builder.Projection.dll" FileName="MICRO~18.DLL|Microsoft.Windows.AppNotifications.Builder.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.AppNotifications.Builder.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.AppNotifications.Projection.dll" Component_="Microsoft.Windows.AppNotifications.Projection.dll" FileName="MICRO~19.DLL|Microsoft.Windows.AppNotifications.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.AppNotifications.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.BadgeNotifications.Projection.dll" Component_="Microsoft.Windows.BadgeNotifications.Projection.dll" FileName="MICRO~20.DLL|Microsoft.Windows.BadgeNotifications.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.BadgeNotifications.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.Foundation.Projection.dll" Component_="Microsoft.Windows.Foundation.Projection.dll" FileName="MICRO~21.DLL|Microsoft.Windows.Foundation.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.Foundation.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.Management.Deployment.Projection.dll" Component_="Microsoft.Windows.Management.Deployment.Projection.dll" FileName="MICRO~22.DLL|Microsoft.Windows.Management.Deployment.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.Management.Deployment.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.Media.Capture.Projection.dll" Component_="Microsoft.Windows.Media.Capture.Projection.dll" FileName="MICRO~23.DLL|Microsoft.Windows.Media.Capture.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.Media.Capture.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.PushNotifications.Projection.dll" Component_="Microsoft.Windows.PushNotifications.Projection.dll" FileName="MICRO~24.DLL|Microsoft.Windows.PushNotifications.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.PushNotifications.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.SDK.NET.dll" Component_="Microsoft.Windows.SDK.NET.dll" FileName="MICRO~25.DLL|Microsoft.Windows.SDK.NET.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.SDK.NET.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.Security.AccessControl.Projection.dll" Component_="Microsoft.Windows.Security.AccessControl.Projection.dll" FileName="MICRO~26.DLL|Microsoft.Windows.Security.AccessControl.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.Security.AccessControl.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.Storage.Pickers.Projection.dll" Component_="Microsoft.Windows.Storage.Pickers.Projection.dll" FileName="MICRO~27.DLL|Microsoft.Windows.Storage.Pickers.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.Storage.Pickers.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.Storage.Projection.dll" Component_="Microsoft.Windows.Storage.Projection.dll" FileName="MICRO~28.DLL|Microsoft.Windows.Storage.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.Storage.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.System.Power.Projection.dll" Component_="Microsoft.Windows.System.Power.Projection.dll" FileName="MICRO~29.DLL|Microsoft.Windows.System.Power.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.System.Power.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.System.Projection.dll" Component_="Microsoft.Windows.System.Projection.dll" FileName="MICRO~30.DLL|Microsoft.Windows.System.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.System.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.Widgets.Projection.dll" Component_="Microsoft.Windows.Widgets.Projection.dll" FileName="MICRO~31.DLL|Microsoft.Windows.Widgets.Projection.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.Windows.Widgets.Projection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.WindowsAppRuntime.Bootstrap.Net.dll" Component_="Microsoft.WindowsAppRuntime.Bootstrap.Net.dll" FileName="MICRO~32.DLL|Microsoft.WindowsAppRuntime.Bootstrap.Net.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.WindowsAppRuntime.Bootstrap.Net.dll" SelfReg="false"/>
+    <ROW File="Microsoft.WinUI.dll" Component_="Microsoft.WinUI.dll" FileName="MICRO~33.DLL|Microsoft.WinUI.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Microsoft.WinUI.dll" SelfReg="false"/>
+    <ROW File="System.Numerics.Tensors.dll" Component_="System.Numerics.Tensors.dll" FileName="SYSTEM~1.DLL|System.Numerics.Tensors.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\System.Numerics.Tensors.dll" SelfReg="false"/>
+    <ROW File="WinRT.Runtime.dll" Component_="WinRT.Runtime.dll" FileName="WINRTR~1.DLL|WinRT.Runtime.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\WinRT.Runtime.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.dll" Component_="Microsoft.Windows.ApplicationModel_1_.Background.UniversalBGTask.dll" FileName="MICROS~1.DLL|Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\runtimes\win-arm64\native\Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.dll" SelfReg="false"/>
+    <ROW File="Microsoft.WindowsAppRuntime.Bootstrap.dll" Component_="Microsoft.WindowsAppRuntime.Bootstrap.dll" FileName="MICROS~2.DLL|Microsoft.WindowsAppRuntime.Bootstrap.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\runtimes\win-arm64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll" SelfReg="false"/>
+    <ROW File="WebView2Loader.dll" Component_="WebView2Loader.dll" FileName="WEBVIE~1.DLL|WebView2Loader.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\runtimes\win-arm64\native\WebView2Loader.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.ApplicationModel_1_.Background.UniversalBGTask.dll" Component_="Microsoft.Windows.ApplicationModel_2_.Background.UniversalBGTask.dll" FileName="MICROS~1.DLL|Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\runtimes\win-arm64ec\native\Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.dll" SelfReg="false"/>
+    <ROW File="Microsoft.WindowsAppRuntime.Bootst_1_rap.dll" Component_="Microsoft.WindowsAppRuntime.Bootst_1_rap.dll" FileName="MICROS~2.DLL|Microsoft.WindowsAppRuntime.Bootstrap.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\runtimes\win-arm64ec\native\Microsoft.WindowsAppRuntime.Bootstrap.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.ApplicationModel_2_.Background.UniversalBGTask.dll" Component_="Microsoft.Windows.ApplicationModel_3_.Background.UniversalBGTask.dll" FileName="MICROS~1.DLL|Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\runtimes\win-x64\native\Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.dll" SelfReg="false"/>
+    <ROW File="Microsoft.WindowsAppRuntime.Bootst_2_rap.dll" Component_="Microsoft.WindowsAppRuntime.Bootst_2_rap.dll" FileName="MICROS~2.DLL|Microsoft.WindowsAppRuntime.Bootstrap.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\runtimes\win-x64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll" SelfReg="false"/>
+    <ROW File="WebView2Loader.dll_1" Component_="WebView2Loader.dll_1" FileName="WEBVIE~1.DLL|WebView2Loader.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\runtimes\win-x64\native\WebView2Loader.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.ApplicationModel_3_.Background.UniversalBGTask.dll" Component_="Microsoft.Windows.ApplicationModel_4_.Background.UniversalBGTask.dll" FileName="MICROS~1.DLL|Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\runtimes\win-x86\native\Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.dll" SelfReg="false"/>
+    <ROW File="Microsoft.WindowsAppRuntime.Bootst_3_rap.dll" Component_="Microsoft.WindowsAppRuntime.Bootst_3_rap.dll" FileName="MICROS~2.DLL|Microsoft.WindowsAppRuntime.Bootstrap.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\runtimes\win-x86\native\Microsoft.WindowsAppRuntime.Bootstrap.dll" SelfReg="false"/>
+    <ROW File="WebView2Loader.dll_2" Component_="WebView2Loader.dll_2" FileName="WEBVIE~1.DLL|WebView2Loader.dll" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\runtimes\win-x86\native\WebView2Loader.dll" SelfReg="false"/>
+    <ROW File="hover_logo.ico" Component_="hover_logo.ico" FileName="HOVER_~1.ICO|hover_logo.ico" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Assets\hover_logo.ico" SelfReg="false"/>
+    <ROW File="SplashScreen.png" Component_="hover_logo.ico" FileName="SPLASH~1.PNG|SplashScreen.png" Attributes="0" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Assets\SplashScreen.png" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.AiPersistentPropComponent">
     <ROW Property="AI_IA_ENABLE" Registry="AI_IA_ENABLE" HklmSearch="AI_IA_ENABLE" HkcuSearch="AI_IA_ENABLE_1"/>
@@ -87,7 +191,7 @@
     <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DigCertStoreComponent">
-    <ROW TimeStampUrl="http://timestamp.digicert.com" SignerDescription="[|ProductName]" DescriptionUrl="http://www.advancedinstaller.com/hover.html" SignOptions="7" SignTool="0" UseSha256="1" Subject="CN=localhost"/>
+    <ROW TimeStampUrl="http://timestamp.digicert.com" SignerDescription="[|ProductName]" DescriptionUrl="http://www.advancedinstaller.com/hover.html" SignOptions="0" SignTool="7" UseSha256="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
     <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
@@ -104,11 +208,6 @@
     <ROW Fragment="VerifyRepairDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRepairDlg.aip"/>
     <ROW Fragment="WelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\WelcomeDlg.aip"/>
   </COMPONENT>
-  <COMPONENT cid="caphyon.advinst.msicomp.MsiActionTextComponent">
-    <ROW Action="AI_DeleteLzma" Description="Deleting files extracted from archive" DescriptionLocId="ActionText.Description.AI_DeleteLzma" TemplateLocId="-"/>
-    <ROW Action="AI_DeleteRLzma" Description="Deleting files extracted from archive" DescriptionLocId="ActionText.Description.AI_DeleteLzma" TemplateLocId="-"/>
-    <ROW Action="AI_ExtractLzma" Description="Extracting files from archive" DescriptionLocId="ActionText.Description.AI_ExtractLzma" TemplateLocId="-"/>
-  </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiAppSearchComponent">
     <ROW Property="AI_IA_ENABLE" Signature_="AI_IA_ENABLE"/>
     <ROW Property="AI_IA_ENABLE" Signature_="AI_IA_ENABLE_1"/>
@@ -117,7 +216,6 @@
     <ROW Name="InstallerAnalytics.dll" SourcePath="&lt;AI_CUSTACTS&gt;InstallerAnalytics.dll"/>
     <ROW Name="SoftwareDetector.dll" SourcePath="&lt;AI_CUSTACTS&gt;SoftwareDetector.dll"/>
     <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
-    <ROW Name="lzmaextractor.dll" SourcePath="&lt;AI_CUSTACTS&gt;lzmaextractor.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
     <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
@@ -150,16 +248,9 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH_ORIGINAL" Target="[AI_SETUPEXEPATH]"/>
     <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
-    <ROW Action="AI_DeleteCadLzma" Type="51" Source="AI_DeleteLzma" Target="[AI_SETUPEXEPATH]"/>
-    <ROW Action="AI_DeleteLzma" Type="1025" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
-    <ROW Action="AI_DeleteRCadLzma" Type="51" Source="AI_DeleteRLzma" Target="[AI_SETUPEXEPATH]"/>
-    <ROW Action="AI_DeleteRLzma" Type="1281" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
     <ROW Action="AI_DetectSoftware" Type="257" Source="SoftwareDetector.dll" Target="OnDetectSoftware"/>
     <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
     <ROW Action="AI_EnableDebugLog" Type="321" Source="aicustact.dll" Target="EnableDebugLog"/>
-    <ROW Action="AI_ExtractCadLzma" Type="51" Source="AI_ExtractLzma" Target="[AI_SETUPEXEPATH]"/>
-    <ROW Action="AI_ExtractLzma" Type="1025" Source="lzmaextractor.dll" Target="ExtractLZMAFiles"/>
-    <ROW Action="AI_FindExeLzma" Type="1" Source="lzmaextractor.dll" Target="FindEXE"/>
     <ROW Action="AI_IaLogCustomInfo" Type="65" Source="InstallerAnalytics.dll" Target="OnAnalyticsLogCustomInfo"/>
     <ROW Action="AI_IaLogInstallData" Type="65" Source="InstallerAnalytics.dll" Target="OnAnalyticsLogInstallData"/>
     <ROW Action="AI_IaLogMachineInfo" Type="321" Source="InstallerAnalytics.dll" Target="OnAnalyticsLogMachineInfo"/>
@@ -185,17 +276,61 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatCompsComponent">
     <ROW Feature_="MainFeature" Component_="AI_IA_ENABLE"/>
-    <ROW Feature_="MainFeature" Component_="Hover.exe"/>
     <ROW Feature_="MainFeature" Component_="ProductInformation"/>
     <ROW Feature_="MainFeature" Component_="APPDIR"/>
-    <ROW Feature_="MainFeature" Component_="hoverapp.exe.config"/>
-    <ROW Feature_="MainFeature" Component_="System.Memory.dll"/>
-    <ROW Feature_="MainFeature" Component_="System.Numerics.Vectors.dll"/>
-    <ROW Feature_="MainFeature" Component_="System.Runtime.CompilerServices.Unsafe.dll"/>
-    <ROW Feature_="MainFeature" Component_="System.Security.Principal.Windows.dll"/>
+    <ROW Feature_="MainFeature" Component_="App.xbf"/>
+    <ROW Feature_="MainFeature" Component_="Hover.dll"/>
+    <ROW Feature_="MainFeature" Component_="Hover.exe"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Graphics.Imaging.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.InteractiveExperiences.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.ML.OnnxRuntime.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Security.Authentication.OAuth.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Web.WebView2.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Web.WebView2.Core.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.AI.ContentSafety.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.AI.Foundation.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.AI.Imaging.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.AI.MachineLearning.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.AI.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.AI.Text.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.ApplicationModel.Background.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.ApplicationModel.DynamicDependency.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.ApplicationModel.Resources.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.ApplicationModel.WindowsAppRuntime.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.AppLifecycle.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.AppNotifications.Builder.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.AppNotifications.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.BadgeNotifications.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.Foundation.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.Management.Deployment.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.Media.Capture.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.PushNotifications.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.SDK.NET.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.Security.AccessControl.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.Storage.Pickers.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.Storage.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.System.Power.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.System.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.Widgets.Projection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.WindowsAppRuntime.Bootstrap.Net.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.WinUI.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Numerics.Tensors.dll"/>
+    <ROW Feature_="MainFeature" Component_="WinRT.Runtime.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.ApplicationModel_1_.Background.UniversalBGTask.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.WindowsAppRuntime.Bootstrap.dll"/>
+    <ROW Feature_="MainFeature" Component_="WebView2Loader.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.ApplicationModel_2_.Background.UniversalBGTask.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.WindowsAppRuntime.Bootst_1_rap.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.ApplicationModel_3_.Background.UniversalBGTask.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.WindowsAppRuntime.Bootst_2_rap.dll"/>
+    <ROW Feature_="MainFeature" Component_="WebView2Loader.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.ApplicationModel_4_.Background.UniversalBGTask.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.WindowsAppRuntime.Bootst_3_rap.dll"/>
+    <ROW Feature_="MainFeature" Component_="WebView2Loader.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="hover_logo.ico"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
-    <ROW Name="hover_logo_1.exe" SourcePath="..\Hover\hover_logo.ico" Index="0"/>
+    <ROW Name="hover_logo.exe" SourcePath="..\Hover\bin\x64\Release\net8.0-windows10.0.19041.0\Assets\hover_logo.ico" Index="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
     <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
@@ -203,25 +338,16 @@
     <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1501"/>
     <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
     <ROW Action="AI_ResolveKnownFolders" Sequence="56"/>
-    <ROW Action="AI_IaToggle" Sequence="102"/>
+    <ROW Action="AI_IaToggle" Sequence="101"/>
     <ROW Action="AI_IaLogPkgStarted" Condition="VersionMsi &lt; &quot;4.05&quot; OR UILevel = 2 OR LIMITUI = 1 OR UPGRADINGPRODUCTCODE" Sequence="55"/>
     <ROW Action="AI_IaLogPkgExitFinish" Condition="VersionMsi &lt; &quot;4.05&quot; OR UILevel = 2 OR LIMITUI = 1 OR UPGRADINGPRODUCTCODE" Sequence="-1"/>
     <ROW Action="AI_IaLogPkgExitFatalError" Condition="VersionMsi &lt; &quot;4.05&quot; OR UILevel = 2 OR LIMITUI = 1 OR UPGRADINGPRODUCTCODE" Sequence="-3"/>
     <ROW Action="AI_IaLogPkgExitUserAbort" Condition="VersionMsi &lt; &quot;4.05&quot; OR UILevel = 2 OR LIMITUI = 1 OR UPGRADINGPRODUCTCODE" Sequence="-2"/>
     <ROW Action="AI_IaLogInstallData" Sequence="1402"/>
-    <ROW Action="AI_DetectSoftware" Sequence="103"/>
+    <ROW Action="AI_DetectSoftware" Sequence="102"/>
     <ROW Action="AI_EnableDebugLog" Sequence="51"/>
     <ROW Action="AI_IaLogMachineInfo" Sequence="399"/>
     <ROW Action="AI_IaLogCustomInfo" Sequence="1401"/>
-    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99" Builds="DefaultBuild"/>
-    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="101" Builds="DefaultBuild"/>
-    <ROW Action="AI_DeleteCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="199" Builds="DefaultBuild"/>
-    <ROW Action="AI_DeleteRCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="198" Builds="DefaultBuild"/>
-    <ROW Action="AI_ExtractCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="197" Builds="DefaultBuild"/>
-    <ROW Action="AI_FindExeLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="196" Builds="DefaultBuild"/>
-    <ROW Action="AI_ExtractLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1549" Builds="DefaultBuild"/>
-    <ROW Action="AI_DeleteRLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1548" Builds="DefaultBuild"/>
-    <ROW Action="AI_DeleteLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="6599" Builds="DefaultBuild"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
