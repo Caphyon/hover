@@ -12,6 +12,7 @@
     <Nullable>enable</Nullable>
     <ApplicationIcon>Assets\hover_logo.ico</ApplicationIcon>
     <Version>$(VersionPrefix)2.0</Version>
+    <AssemblyName>Hover</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
