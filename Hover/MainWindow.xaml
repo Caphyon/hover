@@ -1,0 +1,125 @@
+<Window
+    x:Class="ContainerHover.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ContainerHover"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Container Hover">
+
+    <Grid x:Name="RootGrid" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Padding="32,24,32,20" Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Spacing="16">
+                <Image x:Name="HeaderLogo" Width="64" Height="44" Stretch="Uniform" Opacity="0" Source="ms-appx:///Assets/SplashScreen.png" />
+                <StackPanel Spacing="2" VerticalAlignment="Center">
+                    <TextBlock Text="Container Hover" Style="{ThemeResource TitleTextBlockStyle}" />
+                    <TextBlock Text="Launch trusted Windows tools inside MSIX and App-V containers" Opacity="0.7" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                <Button Click="RefreshButton_Click" ToolTipService.ToolTip="Refresh packages (F5)">
+                    <StackPanel Orientation="Horizontal" Spacing="8"><FontIcon Glyph="&#xE72C;" /><TextBlock Text="Refresh" /></StackPanel>
+                </Button>
+                <Button Click="AboutButton_Click" ToolTipService.ToolTip="About Container Hover"><FontIcon Glyph="&#xE946;" /></Button>
+            </StackPanel>
+        </Grid> 
+
+        <Grid Grid.Row="1" Padding="32,28,32,20" ColumnSpacing="24">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.2*" MinWidth="360" />
+                <ColumnDefinition Width="1*" MinWidth="320" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" RowSpacing="16">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel Spacing="14">
+                    <StackPanel Orientation="Horizontal" Spacing="12">
+                        <TextBlock Text="Target package" Style="{ThemeResource SubtitleTextBlockStyle}" VerticalAlignment="Center" />
+                        <ProgressRing x:Name="PackageProgress" Width="20" Height="20" IsActive="True" />
+                    </StackPanel>
+                    <Pivot x:Name="PackagePivot" SelectionChanged="PackagePivot_SelectionChanged">
+                        <PivotItem Header="MSIX packages" />
+                        <PivotItem Header="App-V packages" />
+                    </Pivot>
+                    <TextBox x:Name="SearchBox" PlaceholderText="Search MSIX packages" TextChanged="SearchBox_TextChanged" Padding="12,8" />
+                </StackPanel>
+                <ListView x:Name="PackagesList" Grid.Row="1" Margin="0,14,0,0" SelectionChanged="PackagesList_SelectionChanged" IsItemClickEnabled="False" SelectionMode="Single">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="local:PackageInfo">
+                            <Grid Padding="12,10" ColumnSpacing="12">
+                                <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                                <Border Width="36" Height="36" CornerRadius="10" Background="{ThemeResource ControlFillColorSecondaryBrush}">
+                                    <FontIcon Glyph="&#xE8A5;" Foreground="{StaticResource AppAccentBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <StackPanel Grid.Column="1" Spacing="2" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+                                    <TextBlock Text="{Binding SecondaryText}" Opacity="0.65" FontSize="12" TextTrimming="CharacterEllipsis" />
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+
+            <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                <StackPanel Spacing="20">
+                    <Border Padding="20" CornerRadius="16" Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1">
+                        <StackPanel Spacing="14">
+                            <TextBlock Text="Selected package" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                            <StackPanel x:Name="PackageDetails" Spacing="10" Visibility="Collapsed">
+                                <StackPanel Spacing="3"><TextBlock Text="Application ID" Opacity="0.65" FontSize="12" /><TextBlock x:Name="AppIdText" TextWrapping="Wrap" /></StackPanel>
+                                <StackPanel Spacing="3"><TextBlock x:Name="IdentityLabel" Text="Package family name" Opacity="0.65" FontSize="12" /><TextBlock x:Name="IdentityText" TextWrapping="Wrap" /></StackPanel>
+                                <StackPanel Spacing="3"><TextBlock x:Name="VersionLabel" Text="Version" Opacity="0.65" FontSize="12" /><TextBlock x:Name="VersionText" /></StackPanel>
+                            </StackPanel>
+                            <TextBlock x:Name="NoPackageText" Text="Choose a package to inspect its container details." Opacity="0.65" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+
+                    <StackPanel Spacing="12">
+                        <Grid>
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                            <StackPanel Spacing="2"><TextBlock Text="Tools" Style="{ThemeResource SubtitleTextBlockStyle}" /><TextBlock Text="Double-click a tool to launch it in the selected container." Opacity="0.65" FontSize="12" /></StackPanel>
+                            <Button Grid.Column="1" Click="AddToolButton_Click" VerticalAlignment="Center"><StackPanel Orientation="Horizontal" Spacing="7"><FontIcon Glyph="&#xE710;" /><TextBlock Text="Add tool" /></StackPanel></Button>
+                        </Grid>
+                        <ListView x:Name="ToolsList" DoubleTapped="ToolsList_DoubleTapped" KeyDown="ToolsList_KeyDown" SelectionMode="Single">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="local:LaunchTool">
+                                    <Grid Padding="12,10" ColumnSpacing="12">
+                                        <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                                        <Border Width="38" Height="38" CornerRadius="10" Background="{ThemeResource ControlFillColorSecondaryBrush}"><FontIcon Glyph="{Binding Glyph}" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2"><TextBlock Text="{Binding Name}" FontWeight="SemiBold"/><TextBlock Text="{Binding Description}" Opacity="0.65" FontSize="12" TextTrimming="CharacterEllipsis" /></StackPanel>
+                                        <FontIcon Grid.Column="2" Glyph="&#xE72A;" Opacity="0.5" VerticalAlignment="Center" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <InfoBar x:Name="StatusBar" Grid.Row="2" Margin="32,0,32,24" IsOpen="False" IsClosable="True" />
+
+        <Border x:Name="SplashOverlay" Grid.RowSpan="3" Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}" Padding="32">
+            <Image x:Name="SplashLogo" Width="650" Height="434" Stretch="Uniform" Source="ms-appx:///Assets/SplashScreen.png" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <CompositeTransform />
+                </Image.RenderTransform>
+            </Image>
+        </Border>
+    </Grid>
+</Window>
