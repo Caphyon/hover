@@ -23,8 +23,8 @@
             <StackPanel Orientation="Horizontal" Spacing="16">
                 <Image x:Name="HeaderLogo" Width="64" Height="44" Stretch="Uniform" Opacity="0" Source="ms-appx:///Assets/SplashScreen.png" />
                 <StackPanel Spacing="2" VerticalAlignment="Center">
-                    <TextBlock Text="Container Hover" Style="{ThemeResource TitleTextBlockStyle}" />
-                    <TextBlock Text="Launch trusted Windows tools inside MSIX and App-V containers" Opacity="0.7" />
+                    <TextBlock Text="Hover" Style="{ThemeResource TitleTextBlockStyle}" />
+                    <TextBlock Text="Launch Windows tools inside MSIX and App-V containers" Opacity="0.7" />
                 </StackPanel>
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">

@@ -32,7 +32,9 @@ public sealed partial class MainWindow : Window
 
         var windowHandle = WindowNative.GetWindowHandle(this);
         var windowId = Win32Interop.GetWindowIdFromWindow(windowHandle);
-        if (AppWindow.GetFromWindowId(windowId).Presenter is OverlappedPresenter presenter)
+        var appWindow = AppWindow.GetFromWindowId(windowId);
+        appWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets", "hover_logo.ico"));
+        if (appWindow.Presenter is OverlappedPresenter presenter)
         {
             presenter.PreferredMinimumWidth = 1600;
             presenter.PreferredMinimumHeight = 900;
